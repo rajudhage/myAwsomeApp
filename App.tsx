@@ -1,64 +1,28 @@
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
-import { Text, TextInput, Button} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './src/screens/Login';
+import About from './src/screens/About';
+import Contact from './src/screens/Contact';
+import Home from './src/screens/Home';
 
-
+const Stack = createNativeStackNavigator();
 function App() {
-  const isDarkMode = useColorScheme() === 'light';
-
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
  
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Welcome</Text>
-      <TextInput style={styles.input} placeholder="Type here..." />
-      <Button title="Press me" onPress={() => {}} />
-    </View>
-    
+    <NavigationContainer>    
+      
+        <Stack.Navigator >
+          <Stack.Screen name="Login" options={{ title: "Welcome back", headerStyle: { backgroundColor: "#4CAF50" }, headerTintColor: "#fff" }} component={Login} />
+          <Stack.Screen name="Home" options={{ title: "Welcome Home", headerStyle: { backgroundColor: "#4CAF50" }, headerTintColor: "#fff" }} component={Home} />         
+          <Stack.Screen name="About" options={{ title: "About Us", headerStyle: { backgroundColor: "#4CAF50" }, headerTintColor: "#fff" }} component={About} />
+          <Stack.Screen name="Contact" component={Contact} />
+        </Stack.Navigator>
+      
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#f0f0f0',
-    borderWidth: 2,
-    borderColor: '#66ffa6ff',
-  },
-  text:{
-    fontSize: 24,
-  },
-  input:{
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    width: '40%',
-    marginTop: 20,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-  },
-  button:{
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: 'blue',
-    color: 'white',
-    textAlign: 'center',
-    borderRadius: 5,
-  }
-});
+
 
 export default App;
