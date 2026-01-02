@@ -1,9 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import BottomTabs from './src/navigations/BottomTabs';
 import Login from './src/screens/Login';
-import About from './src/screens/About';
-import Contact from './src/screens/Contact';
-import Home from './src/screens/Home';
 
 const Stack = createNativeStackNavigator();
 function App() {
@@ -13,12 +12,9 @@ function App() {
     <NavigationContainer>    
       
         <Stack.Navigator >
-          <Stack.Screen name="Login" options={{ title: "Welcome back", headerStyle: { backgroundColor: "#4CAF50" }, headerTintColor: "#fff" }} component={Login} />
-          <Stack.Screen name="Home" options={{ title: "Welcome Home", headerStyle: { backgroundColor: "#4CAF50" }, headerTintColor: "#fff" }} component={Home} />         
-          <Stack.Screen name="About" options={{ title: "About Us", headerStyle: { backgroundColor: "#4CAF50" }, headerTintColor: "#fff" }} component={About} />
-          <Stack.Screen name="Contact" component={Contact} />
+          <Stack.Screen name="Login" component={Login} />
+         <Stack.Screen name="Main" component={BottomTabs} options={{headerShown:false}} />
         </Stack.Navigator>
-      
     </NavigationContainer>
   );
 }

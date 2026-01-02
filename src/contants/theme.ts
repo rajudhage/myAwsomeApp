@@ -1,5 +1,5 @@
 export const colors ={
-    primary:'#4CAF50',
+    primary:'#65cbda',
     secondary:'#ff5722',
     background:'#f5f5f5',
     textPrimary:'#212121',
@@ -12,6 +12,13 @@ export const colors ={
     light:'#f5f5f5',
     white:'#ffffff',
     black:'#000000',
+    red:'#be0000',
+    green:'#00b300',
+    blue:'#0000ff',
+    yellow:'#ffff00',
+    gray:'#808080',
+    grayLight:'#ebebebff',
+    grayDark:'#404040',
     transparent:'transparent',
     
 }

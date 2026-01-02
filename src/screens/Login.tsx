@@ -28,7 +28,7 @@ const Login = ({navigation}: { navigation: any }) =>{
                 <Button
                     title="Login"
                     onPress={() => {
-                        navigation.navigate('Home',{ username: username , password: password});
+                        navigation.navigate('Main',{ username: username , password: password});
                     }}
                 />
             </View>
