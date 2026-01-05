@@ -7,7 +7,6 @@ const Login = ({navigation}: { navigation: any }) =>{
     const [username, setUsername] = useState('');   
     const [password, setPassword] = useState('');
 
-
     return(
         <View style={styles.container}>
             <Text style={styles.text}>Login</Text>

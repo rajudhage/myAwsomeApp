@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import BottomTabs from './src/navigations/BottomTabs';
 import Login from './src/screens/Login';
 

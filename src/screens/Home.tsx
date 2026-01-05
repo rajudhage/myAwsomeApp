@@ -6,7 +6,7 @@ import { useFetch } from '../hooks/useFetch';
 import { useCallback, useMemo } from 'react';
 import DynamicCardGroup from '../components/DynamicCardGroup';
 
-const Home = () => {
+const Home = ({ navigation }: { navigation: any }) => {
     
     const randomColor = () => {
         const r = Math.floor(150 + Math.random() * 205);
@@ -22,6 +22,7 @@ const Home = () => {
     const { data, loading, error } = useFetch(urls);
 
     const renderItem = useCallback(({ item }: any) => {
+        console.log("Home Rendering item:", item.id);
         return (
             <ActionCard
                 name={item.title}
@@ -30,6 +31,9 @@ const Home = () => {
                 color={randomColor()}
                 thumbnail={item.thumbnail}
                 rating={item.rating}
+                id={item.id}
+                navigation={navigation}
+                reviews={item.reviews.length}
             />
         );
     }, []);
@@ -56,6 +60,7 @@ const Home = () => {
         price: item.price,
         discount: item.discountPercentage,
         image: item.thumbnail,
+        id: item.id
     }));
 
     // Home page sections (vertical list)

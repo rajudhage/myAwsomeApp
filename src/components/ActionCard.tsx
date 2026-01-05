@@ -3,18 +3,22 @@ import { colors } from '../contants/theme';
 import RatingStars from './RatingStars';
 
 interface ActionCardProps {
+    id: number,
     name: string,
     price: number,
     color: string,
     thumbnail: string,
     discount?: number,
-    rating?: number
+    rating?: number,
+    navigation: any,
+    reviews?: number,
 }
-const ActionCard = ({ name, price, color, thumbnail, discount, rating }: ActionCardProps) => {
+const ActionCard = ({ name, price, color, thumbnail, discount, rating, id, navigation, reviews }: ActionCardProps) => {
+
     return (
-        <TouchableOpacity style={[styles.card, { backgroundColor: color }]}>
+        <TouchableOpacity style={[styles.card, { backgroundColor: color }]} onPress={() => navigation.navigate('ProductDetails',{ id: id })}>
             <Text style={styles.cardText}>{name}</Text>
-            <View style={styles.rating}><Text style={styles.ratingText}>{rating || 0}</Text><RatingStars rating={rating || 0} /></View>
+            <View style={styles.rating}><RatingStars rating={rating || 0} review={reviews} /></View>
             <ImageBackground source={{ uri: thumbnail }} style={styles.image} >
                 <View style={styles.details}>
                     {discount && <Text style={styles.cardDescription}>{discount}% off</Text>}

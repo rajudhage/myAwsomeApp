@@ -1,12 +1,14 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { colors } from "../contants/theme";
 
 interface RatingProps {
   rating: number;   // e.g., 3.5
   max?: number;     // default = 5
+  review?: number;
 }
 
-const RatingStars = ({ rating, max = 5 }: RatingProps) => {
+const RatingStars = ({ rating, max = 5, review }: RatingProps) => {
   const stars = [];
 
   for (let i = 1; i <= max; i++) {
@@ -23,13 +25,19 @@ const RatingStars = ({ rating, max = 5 }: RatingProps) => {
         key={i}
         name={icon}
         size={22}
-        color="#FFD700"  // gold color
+        color="#f5820d"  // gold color
         style={{ marginRight: 2 }}
       />
     );
   }
 
-  return <View style={styles.starContainer}>{stars}</View>;
+  return (
+    <View style={styles.starContainer}>
+      <Text>{rating}</Text>{stars}
+      <Text style={styles.reviews}>
+        {`(${review})`}</Text>
+    </View>
+  )
 };
 
 const styles = StyleSheet.create({
@@ -37,6 +45,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  reviews: {
+    color: colors.blue
+  }
 });
 
 export default RatingStars;

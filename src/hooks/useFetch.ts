@@ -15,6 +15,6 @@ export const useFetch = (urls: string | string[]) => {
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }, [urls]);
-
+console.log("Fetched data:", data);
   return { data, loading, error };
 };

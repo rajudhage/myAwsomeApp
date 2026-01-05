@@ -1,6 +1,6 @@
 export const colors ={
     primary:'#65cbda',
-    secondary:'#ff5722',
+    secondary:'#ffcb2b',
     background:'#f5f5f5',
     textPrimary:'#212121',
     textSecondary:'#757575',
@@ -13,13 +13,17 @@ export const colors ={
     white:'#ffffff',
     black:'#000000',
     red:'#be0000',
-    green:'#00b300',
-    blue:'#0000ff',
+    greenDark:'#5c871a',
+    greenLight:'#759f2f',
+    blue1:'#0033cc',
+    blue:'#012063',
     yellow:'#ffff00',
     gray:'#808080',
     grayLight:'#ebebebff',
     grayDark:'#404040',
     transparent:'transparent',
+    buttonPrimary:'#ffcb2b',
+    buttonSecondary:'#ffa611'
     
 }
 
