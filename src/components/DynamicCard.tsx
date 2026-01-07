@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import { colors } from '../contants/theme';
 
 interface cardProps {
@@ -7,6 +7,8 @@ interface cardProps {
     discount?: number,
     price?: number,
     image?: string
+    navigation?: any,
+    id?: number
 }
 
 const DynamicCard = ({
@@ -14,10 +16,12 @@ const DynamicCard = ({
     description,
     discount,
     price,
-    image
+    image,
+    navigation,
+    id
 }: cardProps) => {
     return (
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ProductDetails', { id: id })}>
             <ImageBackground
                 source={{ uri: image }}
                 style={styles.image}
@@ -28,7 +32,7 @@ const DynamicCard = ({
 
                 </View>
             </ImageBackground>
-        </View>
+        </TouchableOpacity>
     )
 }
 const styles = StyleSheet.create({

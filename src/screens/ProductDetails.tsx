@@ -3,10 +3,11 @@ import PagerView from 'react-native-pager-view';
 import { useFetch } from '../hooks/useFetch';
 import { useMemo, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
-import RatingStars from './RatingStars';
+import RatingStars from '../components/RatingStars';
 import { colors } from '../contants/theme';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Button } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const { width } = Dimensions.get("window");
 
@@ -110,10 +111,22 @@ const ProductDetails = () => {
                     <View >
                         <Text style={styles.moreInfoTitle}> Shop with confidence</Text>
                         <View style={styles.moreInfoContainer}>
-                            <Text style={styles.moreInfoItem}>{product.returnPolicy}</Text>
-                            <Text style={styles.moreInfoItem}>{product.warrantyInformation}</Text>
-                            <Text style={styles.moreInfoItem}>Top Brand</Text>
-                            <Text style={styles.moreInfoItem}>Free Delivery</Text>
+                            <View style={styles.row}>
+                                <Icon name="backup-restore" size={20} color={colors.blue} />
+                                <Text style={styles.moreInfoItem}>{product.returnPolicy}</Text>
+                            </View>
+                            <View style={styles.row}>
+                                <Icon name="shield-check" size={20} color={colors.blue} />
+                                <Text style={styles.moreInfoItem}>{product.warrantyInformation}</Text>
+                            </View>
+                            <View style={styles.row}>
+                                <Icon name="star" size={20} color={colors.blue} />
+                                <Text style={styles.moreInfoItem}>Top Brand</Text>
+                            </View>
+                            <View style={styles.row}>
+                                <Icon name="truck-delivery" size={20} color={colors.blue} />
+                                <Text style={styles.moreInfoItem}>Free Delivery</Text>
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -208,14 +221,14 @@ const styles = StyleSheet.create({
     moreInfoContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        width: '78%',
+        width: '100%',
         height: 100,
         marginTop: 10,
         justifyContent: 'space-between',
         gap: 10
     },
     moreInfoItem: {
-        width: '48%',
+        width: '38%',
         marginBottom: 10,
         color: colors.blue1,
         fontSize: 16
@@ -224,7 +237,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10
-    }
+    },
+    row: {
+        flexDirection: 'row',     
+        gap: 6,
+    },
 });
 
 export default ProductDetails;

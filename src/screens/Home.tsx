@@ -93,6 +93,7 @@ const Home = ({ navigation }: { navigation: any }) => {
                         <DynamicCardGroup
                             title="Best Products"
                             cards={cardGroup}
+                            navigation={navigation}
                         />
                     </View>
                 );

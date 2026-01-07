@@ -10,9 +10,11 @@ interface DynamicCardGroupProps{
         discount?: number,
         price?: number,
         image?: string
+        id?: number
     }>
+    navigation?: any
 }
-const DynamicCardGroup = ({ title, cards
+const DynamicCardGroup = ({ title, cards, navigation
 
 }: DynamicCardGroupProps) => {
 
@@ -26,6 +28,8 @@ const DynamicCardGroup = ({ title, cards
                     discount={card.discount}
                     price={card.price}
                     image={card.image}
+                    id={card.id}
+                    navigation={navigation}
                 />
             ))}
         </View>
