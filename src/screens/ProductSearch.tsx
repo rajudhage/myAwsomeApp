@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, FlatList } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { colors } from '../contants/theme';
@@ -38,6 +38,17 @@ const ProductSearch = ({ navigation }: any) => {
 
     }, [products, debouncedSearch]);
 
+    const renderItem = useCallback(({item}: any)=>{
+        return (
+            <TouchableOpacity onPress={()=>navigation.navigate('ProductDetails', {id:item.id})}>
+                <Text style={styles.itemText}>{item.title}</Text>
+            </TouchableOpacity>
+        )
+    },[])
+
+    if(error) return <Text>{error}</Text>;
+    if(loading) return <Text>Loading please wait</Text>
+
     return (
         <View style={styles.container}>
             <SafeAreaView style={styles.safeArea} />
@@ -66,9 +77,7 @@ const ProductSearch = ({ navigation }: any) => {
                 <FlatList
                     data={filteredData}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <Text style={styles.itemText}>{item.title}</Text>
-                    )}
+                    renderItem={renderItem}
                 />
             </View>
         </View>
@@ -83,7 +92,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
     },
     headerContainer: {
-        marginTop:-40,
+        marginTop: -40,
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
